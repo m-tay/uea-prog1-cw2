@@ -3,3 +3,6 @@
 TollRoadMain/nbproject/genfiles.properties
 TollRoadMain/nbproject/project.properties
 TollRoadMain/manifest.mf
+*.vsdx
+*.~vsdx
+/TollRoadMain/build/

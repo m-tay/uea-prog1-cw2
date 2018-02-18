@@ -12,7 +12,7 @@ public class Truck extends Vehicle {
     
     @Override
     public int calculateBasicTripCost() {
-        if (numTrailers == 1)
+        if (numTrailers <= 1) // Assume truck with 0 trailers is charged truck base rate
             return 1250;
         else
             return 1500;

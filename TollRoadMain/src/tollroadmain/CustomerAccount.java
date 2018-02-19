@@ -26,8 +26,8 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         discount = Discount.FRIENDS_AND_FAMILY;
     }
     
-    public void deactivateDiscount() {
-        discount = Discount.NONE;
+    public void deactivateDiscount() { 
+       discount = Discount.NONE;
     }
     
     public void addFunds(int addedFunds) {
@@ -67,6 +67,10 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     
     public int getBalance() {
         return balance;
+    }
+    
+    public String getRegNum() {
+        return vehicle.getRegPlate();
     }
     
     // Test harness

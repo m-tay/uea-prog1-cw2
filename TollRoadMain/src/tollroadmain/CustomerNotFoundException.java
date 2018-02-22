@@ -6,4 +6,9 @@ public class CustomerNotFoundException extends Exception {
         
     }
     
+    public String toString() {
+        return "Error: Customer not found";
+    }
+    
+    
 }

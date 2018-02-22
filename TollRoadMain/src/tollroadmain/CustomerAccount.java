@@ -26,8 +26,8 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         discount = Discount.FRIENDS_AND_FAMILY;
     }
     
-    public void deactivateDiscount() {
-        discount = Discount.NONE;
+    public void deactivateDiscount() { 
+       discount = Discount.NONE;
     }
     
     public void addFunds(int addedFunds) {
@@ -46,7 +46,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
             balance = balance - cost;
         }
         else {
-            throw new InsufficientAccountBalanceException(balance, cost);            
+            throw new InsufficientAccountBalanceException();            
         }
     
         return cost;
@@ -67,6 +67,10 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     
     public int getBalance() {
         return balance;
+    }
+    
+    public String getRegNum() {
+        return vehicle.getRegPlate();
     }
     
     // Test harness
@@ -99,9 +103,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         try { // Balance starts 550, should end on 50
             tripCost = testAcc1.makeTrip();
         } catch(InsufficientAccountBalanceException e) {
-            System.out.println("Insufficient account balance! Balance is: " 
-                                + e.getAccountBalance() + " but cost is: " 
-                                + e.getTripCost());
+            System.out.println("Insufficient account balance!");
         } finally {
             System.out.println("Trip cost : " + tripCost);
             System.out.println("testAcc1 balance: " + testAcc1.getBalance());
@@ -110,9 +112,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         try { // Balance starts 50, should throw exception
             tripCost = testAcc1.makeTrip();
         } catch(InsufficientAccountBalanceException e) {
-            System.out.println("Insufficient account balance! Balance is: " 
-                                + e.getAccountBalance() + " but cost is: " 
-                                + e.getTripCost());
+            System.out.println("Insufficient account balance!");
         } finally {
             System.out.println("Trip cost : " + tripCost);
             System.out.println("testAcc1 balance: " + testAcc1.getBalance());
@@ -129,9 +129,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         try { // Balance starts 500, should end on 125
             tripCost = testAccVan.makeTrip();
         } catch(InsufficientAccountBalanceException e) {
-            System.out.println("Insufficient account balance! Balance is: " 
-                                + e.getAccountBalance() + " but cost is: " 
-                                + e.getTripCost());
+            System.out.println("Insufficient account balance!");
         } finally {
             System.out.println("Trip cost : " + tripCost);
             System.out.println("testVan1 balance: " + testAccVan.getBalance());
@@ -140,9 +138,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         try { // Balance should start at 125, should throw exception
             tripCost = testAccVan.makeTrip();
         } catch(InsufficientAccountBalanceException e) {
-            System.out.println("Insufficient account balance! Balance is: " 
-                                + e.getAccountBalance() + " but cost is: " 
-                                + e.getTripCost());
+            System.out.println("Insufficient account balance!");
         } finally {
             System.out.println("Trip cost : " + tripCost);
             System.out.println("testVan1 balance: " + testAccVan.getBalance());
@@ -159,10 +155,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         try { // Balance starts 2000, should end 875
             tripCost = testAccTruck.makeTrip();
         } catch(InsufficientAccountBalanceException e) {
-            System.out.println("Insufficient account balance! Balance is: " 
-                                + e.getAccountBalance() + " but cost is: " 
-                                + e.getTripCost());
-        } finally {
+            System.out.println("Insufficient account balance!");
             System.out.println("Trip cost : " + tripCost);
             System.out.println("testAccTruck balance: " + testAccTruck.getBalance());
         }    
@@ -170,9 +163,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         try { // Balance should start at 875, should throw exception
             tripCost = testAccTruck.makeTrip();
         } catch(InsufficientAccountBalanceException e) {
-            System.out.println("Insufficient account balance! Balance is: " 
-                                + e.getAccountBalance() + " but cost is: " 
-                                + e.getTripCost());
+            System.out.println("Insufficient account balance!");
         } finally {
             System.out.println("Trip cost : " + tripCost);
             System.out.println("testAccTruck balance: " + testAccTruck.getBalance());

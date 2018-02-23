@@ -55,7 +55,7 @@ public class TollRoad {
         // Testing addCustomer()
         TollRoad testRoad = new TollRoad();        
         Car testCar1 = new Car("AA11 AAA", "Ford", 5);
-        CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", testCar1);
+        CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", 0, testCar1);
         
         System.out.println("customers size: " + testRoad.customers.size());
         testRoad.addCustomer(testAcc1);
@@ -67,7 +67,7 @@ public class TollRoad {
         
         // Testing findCustomer
         Van testVan1 = new Van("VA55 NAN", "Renault", 900);
-        CustomerAccount testAcc2 = new CustomerAccount("James", "Gosling", testVan1);
+        CustomerAccount testAcc2 = new CustomerAccount("James", "Gosling", 0, testVan1);
         testRoad.addCustomer(testAcc2);
         
         CustomerAccount foundCustomer;

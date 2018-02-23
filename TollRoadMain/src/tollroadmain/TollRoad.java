@@ -39,7 +39,7 @@ public class TollRoad {
             foundCust = findCustomer(registrationNumber);
             
             try {
-                this.moneyMade += foundCust.makeTrip();
+                this.moneyMade = moneyMade + foundCust.makeTrip();
             } catch (InsufficientAccountBalanceException e) {
                 throw new InsufficientAccountBalanceException();
             }
@@ -48,7 +48,10 @@ public class TollRoad {
             throw new CustomerNotFoundException();
         }
     }
-   
+    
+    public int getMoneyMade() {
+        return moneyMade;
+    }
     
     // Test harness
     public static void main(String args[]) {

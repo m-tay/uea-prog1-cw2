@@ -39,7 +39,7 @@ public class TollRoad {
             foundCust = findCustomer(registrationNumber);
             
             try {
-                this.moneyMade += foundCust.makeTrip();
+                this.moneyMade = moneyMade + foundCust.makeTrip();
             } catch (InsufficientAccountBalanceException e) {
                 throw new InsufficientAccountBalanceException();
             }
@@ -48,14 +48,17 @@ public class TollRoad {
             throw new CustomerNotFoundException();
         }
     }
-   
+    
+    public int getMoneyMade() {
+        return moneyMade;
+    }
     
     // Test harness
     public static void main(String args[]) {
         // Testing addCustomer()
         TollRoad testRoad = new TollRoad();        
         Car testCar1 = new Car("AA11 AAA", "Ford", 5);
-        CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", testCar1);
+        CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", 0, testCar1);
         
         System.out.println("customers size: " + testRoad.customers.size());
         testRoad.addCustomer(testAcc1);
@@ -67,7 +70,7 @@ public class TollRoad {
         
         // Testing findCustomer
         Van testVan1 = new Van("VA55 NAN", "Renault", 900);
-        CustomerAccount testAcc2 = new CustomerAccount("James", "Gosling", testVan1);
+        CustomerAccount testAcc2 = new CustomerAccount("James", "Gosling", 0, testVan1);
         testRoad.addCustomer(testAcc2);
         
         CustomerAccount foundCustomer;

@@ -10,10 +10,10 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     private Vehicle vehicle;
     
     // Constructor
-    public CustomerAccount(String firstName, String lastName, Vehicle vehicle) {
+    public CustomerAccount(String firstName, String lastName, int balance, Vehicle vehicle) {
         this.firstName = firstName;
         this.lastName = lastName;
-        balance = 0; // Assuming accounts always start with no balance
+        this.balance = balance;
         discount = Discount.NONE; 
         this.vehicle = vehicle;
     }
@@ -76,7 +76,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     // Test harness
     public static void main(String args[]) {
         Car testCar1 = new Car("AA11 AAA", "Ford", 5);
-        CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", testCar1);
+        CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", 500, testCar1);
         
         // Testing accessor methods
         System.out.println("testAcc1 first name: " + testAcc1.firstName);
@@ -120,7 +120,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         
         // Testing makeTrip() and staff discount (for 750kg van)
         Van testVan1 = new Van("VA55 NAN", "Renault", 700);
-        CustomerAccount testAccVan = new CustomerAccount("James", "Gosling", testVan1);
+        CustomerAccount testAccVan = new CustomerAccount("James", "Gosling", 1000, testVan1);
         testAccVan.activateStaffDiscount();
         
         tripCost = -1; // Reset testing variable
@@ -146,7 +146,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         
         // Testing makeTrip and friends discount (for 1 trailer truck)
         Truck testTruck1 = new Truck("TR79 UCK", "IVECO", 1);
-        CustomerAccount testAccTruck = new CustomerAccount("Scott", "McNealy", testTruck1);
+        CustomerAccount testAccTruck = new CustomerAccount("Scott", "McNealy", 2000, testTruck1);
         testAccTruck.activateFriendsAndFamilyDiscount();
         
         tripCost = -1; // Reset testing variable
@@ -172,10 +172,10 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         
         // Testing compareTo implementation
         Car testCar2 = new Car("BB22 BBB", "Vauxhall", 3);  
-        CustomerAccount testAcc2 = new CustomerAccount("Steve", "McQueen", testCar2);
+        CustomerAccount testAcc2 = new CustomerAccount("Steve", "McQueen", 1500, testCar2);
         
         Car testCar3 = new Car("AA11 AAA", "Seat", 3);  
-        CustomerAccount testAcc3 = new CustomerAccount("Donald", "Knuth", testCar3);
+        CustomerAccount testAcc3 = new CustomerAccount("Donald", "Knuth", 2000, testCar3);
 
         // Should return -1 (first reg < other reg)
         System.out.println("testAcc1 compared to testAcc2 : " + testAcc1.compareTo(testAcc2));

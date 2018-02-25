@@ -18,7 +18,7 @@ public class Car extends Vehicle {
             return 600;
     }
     
-    int getNumOfSeats() {
+    public int getNumOfSeats() {
         return numberOfSeats;
     }
    

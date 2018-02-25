@@ -61,7 +61,7 @@ public class TollRoadMain {
         return tollRoad;
     }
    
-    static void simulateFromFile(TollRoad road) {
+    public static void simulateFromFile(TollRoad road) {
         File inFile = new File("transactions.txt");
         String line[];
                        

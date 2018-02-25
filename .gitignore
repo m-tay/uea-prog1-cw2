@@ -6,3 +6,5 @@ TollRoadMain/manifest.mf
 *.vsdx
 *.~vsdx
 /TollRoadMain/build/
+*.cdg
+UMLDiagrams/umlproject

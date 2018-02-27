@@ -2,7 +2,7 @@ package tollroadmain;
 
 abstract public class Vehicle {
     
-    protected String regPlate;
+    private String regPlate;
     private String make;
     
     // Constructor

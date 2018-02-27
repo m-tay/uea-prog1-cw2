@@ -52,8 +52,9 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         return cost;
     }
     
+    @Override
     public int compareTo(CustomerAccount other) {
-        return vehicle.regPlate.compareTo(other.vehicle.regPlate);
+        return vehicle.getRegPlate().compareTo(other.vehicle.getRegPlate());
     }
     
     // Accessor methods

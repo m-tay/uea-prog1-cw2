@@ -20,7 +20,7 @@ public class Van extends Vehicle {
             return 1000;
     }
     
-    int getPayload() {
+    public int getPayload() {
         return payload;       
     }
     

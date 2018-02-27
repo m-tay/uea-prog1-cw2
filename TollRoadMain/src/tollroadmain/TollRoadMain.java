@@ -61,7 +61,7 @@ public class TollRoadMain {
         return tollRoad;
     }
    
-    static void simulateFromFile(TollRoad road) {
+    public static void simulateFromFile(TollRoad road) {
         File inFile = new File("transactions.txt");
         String line[];
                        
@@ -91,9 +91,9 @@ public class TollRoadMain {
                     try {
                         // line[1] = regNum
                         road.chargeCustomer(line[1]);  
-                        System.out.println(line[1] + ": Trip completed successfully. Total so far: " + road.getMoneyMade());
+                        System.out.println(line[1] + ": Trip completed successfully");
                     } catch (CustomerNotFoundException e) {
-                        System.out.println(line[1] + ": makeTrip failed. CustomerAccountD does not exist");
+                        System.out.println(line[1] + ": makeTrip failed. CustomerAccount does not exist");
                     } catch (InsufficientAccountBalanceException e) {
                         System.out.println(line[1] + ": makeTrip failed. Insufficient funds");
                     }
@@ -108,7 +108,6 @@ public class TollRoadMain {
 
         TollRoad tollRoad = initialiseTollRoadFromFile();
         simulateFromFile(tollRoad);
-        System.out.println("Simulation run");
         System.out.println("Money made: " + tollRoad.getMoneyMade());
         
     }

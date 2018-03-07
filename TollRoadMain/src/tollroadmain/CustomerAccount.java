@@ -23,7 +23,8 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     }
     
     public void activateFriendsAndFamilyDiscount() {
-        discount = Discount.FRIENDS_AND_FAMILY;
+        if (discount != Discount.STAFF)
+            discount = Discount.FRIENDS_AND_FAMILY;
     }
     
     public void deactivateDiscount() { 
@@ -73,7 +74,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     public String getRegNum() {
         return vehicle.getRegPlate();
     }
-    
+     
     // Test harness
     public static void main(String args[]) {
         Car testCar1 = new Car("AA11 AAA", "Ford", 5);

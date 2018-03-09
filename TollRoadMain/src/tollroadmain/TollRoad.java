@@ -1,9 +1,9 @@
 package tollroadmain;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TollRoad {
-    private ArrayList<CustomerAccount> customers = new ArrayList();
+    private HashMap<Integer, CustomerAccount> customers = new HashMap();
     private int moneyMade;
     
     // Constructor
@@ -12,26 +12,16 @@ public class TollRoad {
     }
     
     public void addCustomer(CustomerAccount customer) {
-        customers.add(customer);
+        customers.put(customer.getRegNum().hashCode(), customer);
     }
     
     public CustomerAccount findCustomer(String regNum) throws CustomerNotFoundException { 
-        // Store index of CustomerAccount in here, -1 if nothing found
-        int customerIndex = -1; 
-        
-        // Iterate through customers, save index to customerIndex if found
-        for(int i=0; i<customers.size(); i++) {
-            if (customers.get(i).getRegNum().equals(regNum))
-                customerIndex = i;
-        }
-        
-        // If a customer was found, customerIndex won't be -1
-        if(customerIndex > -1)
-            return customers.get(customerIndex);
+        if(customers.containsKey(regNum.hashCode()))
+            return customers.get(regNum.hashCode());
         else
             throw new CustomerNotFoundException();           
-    }
-    
+        }
+        
     public void chargeCustomer(String registrationNumber) throws Exception {
         CustomerAccount foundCust;
         

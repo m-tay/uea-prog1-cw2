@@ -55,7 +55,15 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     
     @Override
     public int compareTo(CustomerAccount other) {
-        return vehicle.getRegPlate().compareTo(other.vehicle.getRegPlate());
+        int result = vehicle.getRegPlate().compareTo(other.vehicle.getRegPlate());
+        
+        if (result < 0)
+            return -1;
+        else if (result == 0)
+            return 0;
+        else 
+            return 1;
+            
     }
     
     // Accessor methods
@@ -173,7 +181,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         
         
         // Testing compareTo implementation
-        Car testCar2 = new Car("BB22 BBB", "Vauxhall", 3);  
+        Car testCar2 = new Car("ZZ22 ZZZ", "Vauxhall", 3);  
         CustomerAccount testAcc2 = new CustomerAccount("Steve", "McQueen", 1500, testCar2);
         
         Car testCar3 = new Car("AA11 AAA", "Seat", 3);  

@@ -2,8 +2,8 @@ package tollroadmain;
 
 abstract public class Vehicle {
     
-    private String regPlate;
-    private String make;
+    protected String regPlate;
+    protected String make;
     
     // Constructor
     public Vehicle(String regPlate, String make) {
@@ -14,11 +14,11 @@ abstract public class Vehicle {
     abstract public int calculateBasicTripCost();
     
     // Accessor methods
-    String getRegPlate() {
+    public String getRegPlate() {
         return regPlate;
     }
     
-    String getMake() {
+    public String getMake() {
         return make;
     } 
 }

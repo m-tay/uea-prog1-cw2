@@ -21,6 +21,11 @@ public class Car extends Vehicle {
     public int getNumOfSeats() {
         return numberOfSeats;
     }
+    
+    @Override
+    public String toString() {
+        return "Reg: " + regPlate + " | Make: " + make + " | Seats: " + numberOfSeats;
+    }
    
     // Test harness
     public static void main(String args[]) {
@@ -28,6 +33,8 @@ public class Car extends Vehicle {
         System.out.println("testCar1 reg   : " + testCar1.getRegPlate());
         System.out.println("testCar1 make  : " + testCar1.getMake());
         System.out.println("testCar1 seats : " + testCar1.getNumOfSeats());
+        
+        System.out.println(testCar1);
         
         Car testCar2 = new Car("AB12 CDE", "Ford", 4); // should return 500
         Car testCar3 = new Car("AB12 CDE", "Ford", 6); // should return 600

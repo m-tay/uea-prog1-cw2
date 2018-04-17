@@ -22,6 +22,11 @@ public class Truck extends Vehicle {
         return numTrailers;
     }
 
+    @Override
+    public String toString() {
+        return "Reg: " + regPlate + " | Make: " + make + " | Trailers: " + numTrailers;
+    }
+    
     public static void main(String args[]) {
         Truck testTruck1 = new Truck("AS34 DFG", "DAF", 1);
         System.out.println("testTruck1 reg     : " + testTruck1.getRegPlate());
@@ -29,7 +34,9 @@ public class Truck extends Vehicle {
         System.out.println("testTruck1 trailers: " + testTruck1.getTrailers());
         Truck testTruck2 = new Truck("AS34 DFG", "DAF", 2); // should return 1500
         System.out.println("testTruck1 cost    : " + testTruck1.calculateBasicTripCost());
-        System.out.println("testTruck2 cost    : " + testTruck2.calculateBasicTripCost());        
+        System.out.println("testTruck2 cost    : " + testTruck2.calculateBasicTripCost());  
+        
+        System.out.println(testTruck1);
      }
 }
 

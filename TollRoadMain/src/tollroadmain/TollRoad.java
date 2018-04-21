@@ -21,26 +21,34 @@ public class TollRoad {
         else
             throw new CustomerNotFoundException();           
         }
-        
+
     public void chargeCustomer(String registrationNumber) throws Exception {
         CustomerAccount foundCust;
-        
+
         try {
             foundCust = findCustomer(registrationNumber);
-            
+
             try {
                 this.moneyMade = moneyMade + foundCust.makeTrip();
-            } catch (InsufficientAccountBalanceException e) {
+            } 
+            catch (InsufficientAccountBalanceException e) {
                 throw new InsufficientAccountBalanceException();
             }
-            
-        } catch (CustomerNotFoundException e) {
+
+        } 
+        catch (CustomerNotFoundException e) {
             throw new CustomerNotFoundException();
         }
     }
-    
+
     public int getMoneyMade() {
         return moneyMade;
+    }
+    
+    
+    @Override
+    public String toString() {
+        return "Toll road money made: " + moneyMade;
     }
     
     // Test harness
@@ -49,14 +57,15 @@ public class TollRoad {
         TollRoad testRoad = new TollRoad();        
         Car testCar1 = new Car("AA11 AAA", "Ford", 5);
         CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", 0, testCar1);
+        int custHash = testCar1.regPlate.hashCode();
         
         System.out.println("customers size: " + testRoad.customers.size());
         testRoad.addCustomer(testAcc1);
         System.out.println("1 customer added, customers size: " + testRoad.customers.size());
-        System.out.println("First name: " + testRoad.customers.get(0).getFirstName());
-        System.out.println("Last name : " + testRoad.customers.get(0).getLastName());
-        System.out.println("Reg num   : " + testRoad.customers.get(0).getRegNum());
-        System.out.println("Balance   : " + testRoad.customers.get(0).getBalance());        
+        System.out.println("First name: " + testRoad.customers.get(custHash).getFirstName());
+        System.out.println("Last name : " + testRoad.customers.get(custHash).getLastName());
+        System.out.println("Reg num   : " + testRoad.customers.get(custHash).getRegNum());
+        System.out.println("Balance   : " + testRoad.customers.get(custHash).getBalance());        
         
         // Testing findCustomer
         Van testVan1 = new Van("VA55 NAN", "Renault", 900);
@@ -104,7 +113,7 @@ public class TollRoad {
             System.out.println(e);
         }
         
-        System.out.println("Money made: " + testRoad.moneyMade); 
+        System.out.println(testRoad);
 
    }
 }

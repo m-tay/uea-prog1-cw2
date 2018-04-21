@@ -24,6 +24,12 @@ public class Van extends Vehicle {
         return payload;       
     }
     
+    @Override
+    public String toString() {
+        return "Reg: " + regPlate + " | Make: " + make + " | Payload: " + payload;
+    }
+    
+    
     // Test harness
     public static void main(String args[]) {
         Van testVan1 = new Van("QW09 ERT", "Renault", 250);
@@ -34,7 +40,10 @@ public class Van extends Vehicle {
         Van testVan2 = new Van("QW09 ERT", "Renault", 600); // Should return 500    
         Van testVan3 = new Van("QW09 ERT", "Renault", 750); // Should return 750
         Van testVan4 = new Van("QW09 ERT", "Renault", 800); // Should return 750
-        Van testVan5 = new Van("QW09 ERT", "Renault", 900); // Should return 1000        
+        Van testVan5 = new Van("QW09 ERT", "Renault", 900); // Should return 1000 
+        
+        System.out.println(testVan1);
+        
         System.out.println("testVan1 cost    : " + testVan1.calculateBasicTripCost());
         System.out.println("testVan2 cost    : " + testVan2.calculateBasicTripCost());
         System.out.println("testVan3 cost    : " + testVan3.calculateBasicTripCost());

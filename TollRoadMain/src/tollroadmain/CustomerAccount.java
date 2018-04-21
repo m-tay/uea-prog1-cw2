@@ -49,7 +49,7 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
         else {
             throw new InsufficientAccountBalanceException();            
         }
-    
+      
         return cost;
     }
     
@@ -82,11 +82,20 @@ public class CustomerAccount implements Comparable<CustomerAccount> {
     public String getRegNum() {
         return vehicle.getRegPlate();
     }
-     
+    
+    @Override
+    public String toString() {
+        return "First name: " + firstName + " | Last name: " + lastName + 
+               " | Balance: " + balance + " | Discount: " + discount + 
+               " | Vehicle: " + vehicle;
+    }
+    
     // Test harness
     public static void main(String args[]) {
         Car testCar1 = new Car("AA11 AAA", "Ford", 5);
         CustomerAccount testAcc1 = new CustomerAccount("Joe", "Bloggs", 500, testCar1);
+        
+        System.out.println(testAcc1);
         
         // Testing accessor methods
         System.out.println("testAcc1 first name: " + testAcc1.firstName);
